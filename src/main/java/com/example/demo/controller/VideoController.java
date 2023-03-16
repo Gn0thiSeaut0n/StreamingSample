@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/video")
+@RequestMapping("/video/region")
 @RequiredArgsConstructor
 public class VideoController {
 	
@@ -31,13 +31,13 @@ public class VideoController {
 
 	private final ResourceLoader resourceLoader;
 
-	@GetMapping("/region")
+	@GetMapping
 	public String videoRegion(Model model) {
 		model.addAttribute("videoUrl", "/video/region/video.mp4");
 		return TEMPLATE_DIR + "video";
 	}
 
-	@GetMapping("/region/{fileName}")
+	@GetMapping("/{fileName}")
 	public ResponseEntity<ResourceRegion> videoRegionFileName(
 			@PathVariable String fileName,
 			@RequestHeader HttpHeaders headers) throws IOException {
